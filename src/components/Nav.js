@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Nav = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => { })
+    }
+
     const menu = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/login'>Log in</Link></li>
-        <li><Link to='/signup'>Sign Up</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
+        {
+            user?.email ?
+                <li><Link onClick={handleSignOut}>Log Out</Link></li>
+                :
+                <li><Link to="/login">Log In</Link></li>
+        }
     </>
 
 
     const subMenu = <>
-        <Link to='/'>profile</Link>
-        <Link to='login'>Log in</Link>
-        <Link to='/singup'>Sign up</Link>
+        {
+            user?.displayName ?
+                <li><Link>{user?.displayName}</Link></li>
+                :
+                <li>No User</li>
+        }
+        {
+            user?.email ?
+                <li><Link onClick={handleSignOut}>Log Out</Link></li>
+                :
+                <li><Link to="/login">Log In</Link></li>
+        }
     </>
     return (
         <div className="navbar bg-base-100">
@@ -25,7 +49,7 @@ const Nav = () => {
                         {menu}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">Robin</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">BackPacker - A Travel Lover</Link>
             </div>
             <div className="navbar-center hidden lg:flex justify-between">
                 <ul className="menu menu-horizontal p-0">
@@ -36,7 +60,19 @@ const Nav = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" alt='' />
+                            {user?.photoURL ?
+                                <div>
+                                    <img style={{ height: '40px' }} alt=''
+                                        src={user?.photoURL}>
+
+                                    </img>
+                                </div>
+                                : <div className="avatar placeholder">
+                                    <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                                        <span className="text-xs">😇</span>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
