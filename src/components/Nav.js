@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Nav = () => {
@@ -69,7 +68,7 @@ const Nav = () => {
                                 </div>
                                 : <div className="avatar placeholder">
                                     <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                                        <span className="text-xs">😇</span>
+                                        <span className="text-xs">😎</span>
                                     </div>
                                 </div>
                             }

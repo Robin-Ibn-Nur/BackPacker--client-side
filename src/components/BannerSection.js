@@ -12,8 +12,8 @@ const BannerSection = () => {
         backgroundRepeat: 'no-repeat',
     };
     return (
-        <div style={myStyle}>
-            <h1 className='text-center'>Welcome</h1>
+        <div className='text-center' style={myStyle}>
+            <h1>Welcome</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam esse illum asperiores quod repellendus dignissimos omnis aut molestias aspernatur, doloribus accusamus, ipsum necessitatibus suscipit impedit incidunt</p>
         </div>
     );
