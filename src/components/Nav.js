@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Nav = () => {
@@ -7,19 +8,37 @@ const Nav = () => {
 
     const handleSignOut = () => {
         logOut()
-            .then(() => { })
-            .catch(error => { })
+            .then(() => {
+                toast.success('Successfully SignOut', { autoClose: 500 })
+            })
+            .catch(error => {
+                toast.info('SignOut Incomplete')
+            })
     }
 
     const menu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         {
+            user ?
+                <li><Link to='/review'>My Reviews</Link></li>
+                :
+                ""
+
+        }
+        {
+            user ?
+                <li><Link to='/addService'>Add Service</Link></li>
+                :
+                ""
+        }
+        {
             user?.email ?
                 <li><Link onClick={handleSignOut}>Log Out</Link></li>
                 :
                 <li><Link to="/login">Log In</Link></li>
         }
+
     </>
 
 

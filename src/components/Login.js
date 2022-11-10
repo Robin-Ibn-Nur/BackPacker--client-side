@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import UseTitle from '../TitleChangeHook/UseTitle'
 import Google from '../components/Google'
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { register } = useContext(AuthContext)
     UseTitle('LogIn')
+    const nevigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = event => {
         event.preventDefault();
@@ -18,9 +22,11 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success("You are successFully Loged In", { autoClose: 500 })
+                form.reset()
+                nevigate(from, { replace: true });
             })
-            .catch(error => console.log(error))
-        form.reset()
+            .catch(error => toast.error("Log In Fail!", { autoClose: 500 }))
     }
 
     return (

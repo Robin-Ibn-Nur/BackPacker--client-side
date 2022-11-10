@@ -1,14 +1,26 @@
 import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Google = () => {
 
     const { signInWithGoogle } = useContext(AuthContext);
+    const nevigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-            .then(result => console.log(result.user))
-            .catch(error => console.log(error))
+            .then(result => {
+                toast.success("SuccessFully SignUp", { autoClose: 500 })
+                console.log(result.user)
+                nevigate(from, { replace: true });
+            })
+            .catch(error => {
+                toast.error("SignUp Fail!", { autoClose: 500 })
+                console.log(error)
+            })
     }
 
     return (
