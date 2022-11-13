@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import UseTitle from '../TitleChangeHook/UseTitle';
 import User from './User';
 
 const UserReview = () => {
     const { user, logOut } = useContext(AuthContext);
     const [users, setUsers] = useState([])
+    UseTitle('My Review')
 
-    console.log(users)
     useEffect(() => {
         fetch(`http://localhost:5000/reviewer?email=${user?.email}`, {
             headers: {

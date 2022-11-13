@@ -7,7 +7,9 @@ const AllDataTable = ({ data }) => {
     useEffect(() => {
         fetch(`http://localhost:5000/service/${reviewerID}`)
             .then(res => res.json())
-            .then(data => setReview(data))
+            .then(data => {
+                setReview(data)
+            })
 
     }, [reviewerID])
 

@@ -7,7 +7,7 @@ import AllData from './AllData';
 
 const Review = ({ categorie, image, description, Price, id }) => {
     const { user } = useContext(AuthContext);
-    UseTitle('ReVieW')
+    UseTitle('RevieW')
     const [reload, setReload] = useState(false)
     const [success, setSuccess] = useState('');
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UseTitle from '../TitleChangeHook/UseTitle';
 
 const ErrorPage = () => {
+    UseTitle('ErrorPage')
     return (
         <>
             <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">

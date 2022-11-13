@@ -1,10 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import UseTitle from '../TitleChangeHook/UseTitle';
 import Review from './Review';
 
 const Service = () => {
     const { _id, name, image, description, Price } = useLoaderData()
-
+    UseTitle('Service')
     return (
         <div>
             <section>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import UseTitle from '../TitleChangeHook/UseTitle';
 
 const Update = () => {
     const userMessage = useLoaderData()
     const [updateMessage, setUpdateMessage] = useState(userMessage)
+    UseTitle('Feedback Update')
 
     const handleUpdate = event => {
         event.preventDefault()

@@ -8,7 +8,6 @@ const AddService = () => {
     const { user, logOut } = useContext(AuthContext);
     const [users, setUsers] = useState([])
 
-    console.log(users)
     useEffect(() => {
         fetch(`http://localhost:5000/reviewer?email=${user?.email}`, {
             headers: {

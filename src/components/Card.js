@@ -1,9 +1,11 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import UseTitle from '../TitleChangeHook/UseTitle';
 
 const Card = ({ service }) => {
     const { image, name, Price, description } = service;
+    UseTitle('service')
     return (
         <div>
             <div className="min-h-80 border-[10px] aspect-w-1 aspect-h-1 w-full  rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
