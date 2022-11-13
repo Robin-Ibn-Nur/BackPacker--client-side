@@ -3,8 +3,6 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import SingleService from './SingleService'
 
-// import { PhotoProvider, PhotoView } from 'react-photo-view';
-// import 'react-photo-view/dist/react-photo-view.css';
 
 const AddService = () => {
     const { user, logOut } = useContext(AuthContext);

@@ -12,9 +12,12 @@ const BannerSection = () => {
         backgroundRepeat: 'no-repeat',
     };
     return (
-        <div className='text-center' style={myStyle}>
-            <h1>Welcome</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam esse illum asperiores quod repellendus dignissimos omnis aut molestias aspernatur, doloribus accusamus, ipsum necessitatibus suscipit impedit incidunt</p>
+        <div className="brightness-150 grid place-content-center" style={myStyle}>
+            <div className=' text-center font-serif opacity-100' >
+                <h1>”Life is short and the world is wide”</h1>
+                <p>“Be fearless in the pursuit of what sets your soul on fire.” - Jennifer Lee</p>
+                <p>“Travel makes one modest. You see what a tiny place you occupy in the world.” -Gustav Flaubert</p>
+            </div>
         </div>
     );
 };

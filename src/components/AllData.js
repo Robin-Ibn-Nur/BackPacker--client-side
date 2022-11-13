@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import AllDataTable from './AllDataTable';
 
-const AllData = () => {
+const AllData = ({ reload }) => {
 
-    const [allData, setAllData] = useState([])
+    const [allData, setAllData] = useState()
 
     useEffect(() => {
         fetch('http://localhost:5000/reviewer')
             .then(res => res.json())
-            .then(data => setAllData(data))
-    }, [])
+            .then(data => {
+                console.log(data)
+                setAllData(data)
+            })
+    }, [reload])
 
     return (
         <div className="overflow-x-auto w-full bg-orange-700 border-amber-300">

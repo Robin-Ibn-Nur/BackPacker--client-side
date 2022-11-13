@@ -13,7 +13,8 @@ const Update = () => {
         fetch(`http://localhost:5000/reviewer/${userMessage._id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'applicatin/json',
+                authorization: `Bearer ${localStorage.getItem('genius-token')}`
             },
             body: JSON.stringify(updateMessage)
 
@@ -21,7 +22,6 @@ const Update = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    // alert('success')
                     toast.success('Your Message Updated Successfully', { autoClose: 500 })
                     event.target.reset();
                 }

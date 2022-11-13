@@ -35,7 +35,7 @@ const UserReview = () => {
             fetch(`http://localhost:5000/reviewer/${id}`, {
                 method: "DELETE",
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('user-token')}`
+                    authorization: `Bearer ${localStorage.getItem('user-token')}`
                 }
             })
                 .then(res => res.json())
@@ -48,27 +48,6 @@ const UserReview = () => {
                     }
                 })
         }
-    }
-
-    const handleUpdate = id => {
-        fetch(`http://localhost:5000/reviewer/${id}`, {
-            method: "PATCH",
-            headers: {
-                'content-type': 'applicatin/json',
-                // authorization: `Bearer ${localStorage.getItem('genius-token')}`
-            },
-            body: JSON.stringify({ status: 'APPROVED' })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    const remaining = users.filter(review => review._id !== id);
-                    const approving = users.find(us => us._id === id);
-                    approving.status = '√'
-                    const newUpdate = [approving, ...remaining];
-                    setUsers(newUpdate);
-                }
-            })
     }
 
     return (
@@ -94,7 +73,6 @@ const UserReview = () => {
                                         key={us._id}
                                         us={us}
                                         handleDelete={handleDelete}
-                                        handleUpdate={handleUpdate}
                                     ></User>
                                     )
                                 }
