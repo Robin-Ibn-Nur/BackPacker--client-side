@@ -9,6 +9,7 @@ import Review from "../components/Review";
 import Service from "../components/Service";
 import Services from "../components/Services";
 import SignUp from "../components/SignUp";
+import Update from "../components/Update";
 import UserReview from "../components/UserReview";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -43,6 +44,11 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><Review></Review></PrivateRoute>
             },
             {
+                path: "/update/:id",
+                element: <Update></Update>,
+                loader: ({ params }) => fetch(`http://localhost:5000/reviewer/${params.id}`)
+            },
+            {
                 path: '/services',
                 element: <Services></Services>
             },
@@ -53,7 +59,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/userReview',
-                element: <UserReview></UserReview>
+                element: <PrivateRoute><UserReview></UserReview></PrivateRoute>
             }
         ]
     }

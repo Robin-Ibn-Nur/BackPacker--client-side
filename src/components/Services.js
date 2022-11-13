@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UseTitle from '../TitleChangeHook/UseTitle';
 
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+
 const Services = () => {
     const [service, setService] = useState([]);
     UseTitle('SerViceS');
@@ -13,17 +16,21 @@ const Services = () => {
     return (
         <div>
             <div className="bg-orange-500 rounded-box my-5 mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 ">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Wanna Travel With Me! Choose one of the Packages</h2>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Wanna Travel With Me! Choose one of the Packages.</h2>
 
                 <div className=" mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 lg:grid-cols-3">
                     {service.map((e) => (
-                        <div key={e._id} className="group relative h-100">
+                        <div key={e._id} className="h-100">
                             <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                                <img
-                                    src={e.image}
-                                    alt=''
-                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                />
+                                <PhotoProvider>
+                                    <PhotoView src={e.image}>
+                                        <img
+                                            src={e.image}
+                                            alt=''
+                                            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                        />
+                                    </PhotoView>
+                                </PhotoProvider>
                             </div>
                             <div className="mt-4 flex justify-between">
                                 <div>

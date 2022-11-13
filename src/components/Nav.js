@@ -20,17 +20,13 @@ const Nav = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         {
-            user ?
-                <li><Link to='/review'>My Reviews</Link></li>
-                :
-                ""
-
-        }
-        {
-            user ?
+            user &&
+            <>
                 <li><Link to='/addService'>Add Service</Link></li>
-                :
-                ""
+                <li><Link to='/userReview'>My Reviews</Link></li>
+            </>
+
+
         }
         {
             user?.email ?

@@ -17,14 +17,29 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+
         register(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                toast.success("You are successFully Loged In", { autoClose: 500 })
-                form.reset()
-                nevigate(from, { replace: true });
+                const currentUser = {
+                    email: user.email
+                }
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        toast.success("You are successFully Loged In", { autoClose: 500 })
+                        localStorage.setItem('user-token', data.token);
+                        nevigate(from, { replace: true });
+                    });
+
             })
             .catch(error => toast.error("Log In Fail!", { autoClose: 500 }))
     }

@@ -10,7 +10,7 @@ const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
 
     const signInWithGoogle = () => {
@@ -18,6 +18,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        localStorage.removeItem('user-token')
         setLoading(true)
         return signOut(auth)
     }
@@ -35,7 +36,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser);
-            setLoading(true);
+            setLoading(false);
             setUser(currentUser)
         });
         return () => {

@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import UseTitle from '../TitleChangeHook/UseTitle';
+import AllData from './AllData';
 
 const Review = ({ categorie, image, description, Price, id }) => {
     const { user } = useContext(AuthContext);
     UseTitle('ReVieW')
     const [success, setSuccess] = useState('');
-    const [userEmail, setUserEmail] = useState(user);
+    const [users, setUsers] = useState(user);
+
+
+
 
     const handleMessage = event => {
         event.preventDefault();
@@ -16,12 +20,15 @@ const Review = ({ categorie, image, description, Price, id }) => {
         const name = form.name.value;
         const email = form.email.value;
         const message = form.message.value;
-        if (userEmail) {
+        if (users) {
             setSuccess(message)
+            toast.success('Thank You for your feedback', { autoClose: 500 })
+            console.log(users);
 
-        } else {
-            setSuccess('')
-            setUserEmail()
+        }
+        else {
+            toast.error('Please Loged In First', { autoClose: 500 })
+            setSuccess("")
         }
 
         const review = {
@@ -29,22 +36,26 @@ const Review = ({ categorie, image, description, Price, id }) => {
             name,
             email,
             message,
+            Price,
+            image,
+            description,
             selectedOption: categorie
         }
         fetch('http://localhost:5000/reviewer', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                // authorization: `Bearer ${localStorage.getItem('user-token')}`
             },
             body: JSON.stringify(review)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.acknowledged) {
-                    toast.success('Thank You for your feedback', { autoClose: 500 })
-                    form.reset();
-                }
+                // if (data.acknowledged) {
+                //     setUsers([...])
+                //     form.reset();
+                // }
             })
             .catch(error => console.log(error))
     }
@@ -56,8 +67,8 @@ const Review = ({ categorie, image, description, Price, id }) => {
                     <div className="flex space-x-4">
                         <div>
                             {
-                                userEmail?.photoURL ?
-                                    <img src={userEmail?.photoURL} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
+                                users?.photoURL ?
+                                    <img src={users?.photoURL} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
                                     :
                                     <span className="object-cover w-12 h-12 rounded-full bg-gray-500">😂</span>
                             }
@@ -65,8 +76,8 @@ const Review = ({ categorie, image, description, Price, id }) => {
                         </div>
                         <div>
                             {
-                                userEmail?.displayName ?
-                                    <h4 className="font-bold">{userEmail?.displayName?.email}</h4>
+                                users?.displayName ?
+                                    <h4 className="font-bold">{users?.displayName?.email}</h4>
                                     :
                                     <span className='font-bold'>Unknown User</span>
                             }
@@ -90,15 +101,17 @@ const Review = ({ categorie, image, description, Price, id }) => {
                     <form onSubmit={handleMessage} className="flex flex-col w-full">
                         <div className='sm:grid grid-cols-1 lg:flex justify-between my-10'>
                             <input type="text" placeholder="Your Name" name='name' className="input input-bordered input-success" />
-                            <input type="text" placeholder="Your Email" defaultValue={userEmail?.email} name='email' className="input input-bordered input-success" required />
+                            <input type="text" placeholder="Your Email" defaultValue={users?.email} name='email' className="input input-bordered input-success" required />
                         </div>
                         <input type="text" name="message" rows="3" placeholder='Message...' id="" className='p-4 resize-none rounded-md text-gray-100 textarea textarea-secondary' spellCheck="false" />
                         <div className='from-control text-center'>
-
                             <input type="submit" value='Leave feedback' className="btn py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400" />
                         </div>
                         {
-                            userEmail ? "" : <Link to="/login" className='text-center text-red-600'>Please login to add a review</Link>
+                            users?.email ?
+                                <span className='text-green-600 text-center'>Thanks in advance for Your feedback</span>
+                                :
+                                <Link to="/login" className='text-center text-red-600'>Please login to add a review</Link>
                         }
                     </form>
 
@@ -107,6 +120,9 @@ const Review = ({ categorie, image, description, Price, id }) => {
                     <button rel="noopener noreferrer" className="text-sm dark:text-gray-400 btn btn-ghost">Maybe later</button>
                 </div>
             </div>
+            <section className='container my-20'>
+                <AllData></AllData>
+            </section>
         </>
     );
 };
