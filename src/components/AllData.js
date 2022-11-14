@@ -8,9 +8,7 @@ const AllData = ({ reload }) => {
     useEffect(() => {
         fetch('https://server-site-fawn.vercel.app/reviewer')
             .then(res => res.json())
-            .then(data => {
-                setAllData(data)
-            })
+            .then(data => setAllData(data))
     }, [reload])
 
     return (

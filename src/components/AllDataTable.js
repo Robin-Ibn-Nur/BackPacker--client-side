@@ -3,16 +3,11 @@ import React, { useEffect, useState } from 'react';
 const AllDataTable = ({ data }) => {
     const { name, Price, message, selectedOption, reviewerID } = data;
     const [review, setReview] = useState([]);
-    console.log(data)
-
-
 
     useEffect(() => {
         fetch(`https://server-site-fawn.vercel.app/service/${reviewerID}`)
             .then(res => res.json())
-            .then(data => {
-                setReview(data)
-            })
+            .then(data => setReview(data))
 
     }, [reviewerID])
 

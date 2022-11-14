@@ -42,9 +42,9 @@ const Services = () => {
                                     <p className="mt-1 text-sm text-gray-900"><span className='font-bold'>Something Should Know About  </span>
                                         {
                                             e.description?.length > 100 ?
-                                                <p>{e.description.split("", 100)}...</p>
+                                                <>{e.description.split("", 100)}...</>
                                                 :
-                                                <p>{e.discription}</p>
+                                                <>{e.discription}</>
                                         }</p>
                                 </div>
                                 <p className="text-m font-medium text-gray-900">Price:{e.Price}$</p>
