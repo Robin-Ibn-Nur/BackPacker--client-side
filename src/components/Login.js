@@ -34,7 +34,6 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         toast.success("You are successFully Loged In", { autoClose: 500 })
                         localStorage.setItem('user-token', data.token);
                         nevigate(from, { replace: true });
