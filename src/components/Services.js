@@ -10,10 +10,7 @@ const Services = () => {
     useEffect(() => {
         fetch('https://server-site-fawn.vercel.app/service')
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setService(data)
-            })
+            .then(data => setService(data))
     }, [])
     return (
         <div>
