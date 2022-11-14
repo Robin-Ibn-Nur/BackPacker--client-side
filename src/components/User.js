@@ -9,10 +9,7 @@ const User = ({ us, handleDelete }) => {
     useEffect(() => {
         fetch(`https://server-site-fawn.vercel.app/service/${reviewerID}`)
             .then(res => res.json())
-            .then(data => {
-                setReview(data)
-                console.log(data)
-            })
+            .then(data => setReview(data))
 
     }, [reviewerID])
 

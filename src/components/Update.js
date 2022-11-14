@@ -11,7 +11,6 @@ const Update = () => {
     const handleUpdate = event => {
         event.preventDefault()
         const form = event.target;
-        console.log(updateMessage)
 
         fetch(`https://server-site-fawn.vercel.app/reviewer/${userMessage._id}`, {
             method: 'PUT',

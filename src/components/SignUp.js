@@ -15,14 +15,12 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
         creatUser(email, password)
             .then(result => {
                 const user = result.user;
                 toast.success('Registration Complete', { autoClose: 500 })
-                console.log(user);
             })
-            .catch(error => console.log(error))
+            .catch(error => toast.error("Registration Incomplet", { autoClose: 500 }))
         form.reset()
     }
 

@@ -14,12 +14,10 @@ const Google = () => {
         signInWithGoogle()
             .then(result => {
                 toast.success("SuccessFully SignUp", { autoClose: 500 })
-                console.log(result.user)
                 nevigate(from, { replace: true });
             })
             .catch(error => {
                 toast.error("SignUp Fail!", { autoClose: 500 })
-                console.log(error)
             })
     }
 
