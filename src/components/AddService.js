@@ -21,7 +21,7 @@ const AddService = () => {
         }
 
 
-        fetch("http://localhost:5000/service", {
+        fetch("https://server-site-fawn.vercel.app/service", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

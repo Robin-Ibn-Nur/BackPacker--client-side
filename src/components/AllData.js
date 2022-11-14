@@ -6,7 +6,7 @@ const AllData = ({ reload }) => {
     const [allData, setAllData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviewer')
+        fetch('https://server-site-fawn.vercel.app/reviewer')
             .then(res => res.json())
             .then(data => {
                 setAllData(data)

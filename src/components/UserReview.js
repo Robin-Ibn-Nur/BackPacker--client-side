@@ -10,7 +10,7 @@ const UserReview = () => {
     UseTitle('My Review')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewer?email=${user?.email}`, {
+        fetch(`https://server-site-fawn.vercel.app/reviewer?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('user-token')}`
             }
@@ -34,7 +34,7 @@ const UserReview = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to cancel this item')
         if (proceed) {
-            fetch(`http://localhost:5000/reviewer/${id}`, {
+            fetch(`https://server-site-fawn.vercel.app/reviewer/${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('user-token')}`

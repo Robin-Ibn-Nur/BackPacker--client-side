@@ -8,13 +8,13 @@ const AllDataTable = ({ data }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${reviewerID}`)
+        fetch(`https://server-site-fawn.vercel.app/service/${reviewerID}`)
             .then(res => res.json())
             .then(data => {
                 setReview(data)
             })
 
-    }, [])
+    }, [reviewerID])
 
     return (
 

@@ -13,7 +13,7 @@ const Update = () => {
         const form = event.target;
         console.log(updateMessage)
 
-        fetch(`http://localhost:5000/reviewer/${userMessage._id}`, {
+        fetch(`https://server-site-fawn.vercel.app/reviewer/${userMessage._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

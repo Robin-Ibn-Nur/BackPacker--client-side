@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             {
                 path: "/update/:id",
                 element: <Update></Update>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviewer/${params.id}`)
+                loader: ({ params }) => fetch(`https://server-site-fawn.vercel.app/reviewer/${params.id}`)
             },
             {
                 path: '/services',
@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
             {
                 path: '/service/:id',
                 element: <Service></Service>,
-                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+                loader: ({ params }) => fetch(`https://server-site-fawn.vercel.app/service/${params.id}`)
             },
             {
                 path: '/userReview',

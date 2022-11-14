@@ -40,7 +40,7 @@ const Review = ({ categorie, image, description, Price, id }) => {
             description,
             selectedOption: categorie
         }
-        fetch('http://localhost:5000/reviewer', {
+        fetch('https://server-site-fawn.vercel.app/reviewer', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
