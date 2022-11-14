@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UseTitle from '../TitleChangeHook/UseTitle';
-
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
@@ -11,7 +10,10 @@ const Services = () => {
     useEffect(() => {
         fetch('http://localhost:5000/service')
             .then(res => res.json())
-            .then(data => setService(data))
+            .then(data => {
+                console.log(data)
+                setService(data)
+            })
     }, [])
     return (
         <div>
@@ -37,7 +39,13 @@ const Services = () => {
                                     <h3 className="text-xl text-gray-900 font-bold">
                                         {e.name}
                                     </h3>
-                                    <p className="mt-1 text-sm text-gray-900"><span className='font-bold'>Something Should Know About</span> {e.description.split("", 100)} ...</p>
+                                    <p className="mt-1 text-sm text-gray-900"><span className='font-bold'>Something Should Know About  </span>
+                                        {
+                                            e.description?.length > 100 ?
+                                                <p>{e.description.split("", 100)}...</p>
+                                                :
+                                                <p>{e.discription}</p>
+                                        }</p>
                                 </div>
                                 <p className="text-m font-medium text-gray-900">Price:{e.Price}$</p>
                             </div>

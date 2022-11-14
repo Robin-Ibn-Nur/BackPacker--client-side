@@ -3,13 +3,12 @@ import AllDataTable from './AllDataTable';
 
 const AllData = ({ reload }) => {
 
-    const [allData, setAllData] = useState()
+    const [allData, setAllData] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:5000/reviewer')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setAllData(data)
             })
     }, [reload])
@@ -27,7 +26,7 @@ const AllData = ({ reload }) => {
                 </thead>
                 <tbody className='bg-orange-700'>
                     {
-                        allData.map(data => <AllDataTable
+                        allData?.map(data => <AllDataTable
                             key={data._id}
                             data={data}
                         ></AllDataTable>)

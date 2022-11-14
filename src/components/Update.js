@@ -10,22 +10,24 @@ const Update = () => {
 
     const handleUpdate = event => {
         event.preventDefault()
+        const form = event.target;
         console.log(updateMessage)
 
         fetch(`http://localhost:5000/reviewer/${userMessage._id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'applicatin/json',
+                'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('genius-token')}`
             },
             body: JSON.stringify(updateMessage)
 
         })
+
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
+                    form.reset();
                     toast.success('Your Message Updated Successfully', { autoClose: 500 })
-                    event.target.reset();
                 }
             })
 

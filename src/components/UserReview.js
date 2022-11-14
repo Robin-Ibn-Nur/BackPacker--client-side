@@ -23,6 +23,7 @@ const UserReview = () => {
                 return res.json()
             })
             .then(data => {
+                console.log(data)
                 setUsers(data)
 
             })

@@ -13,7 +13,7 @@ const BannerSection = () => {
     };
     return (
         <div className="brightness-150 grid place-content-center" style={myStyle}>
-            <div className=' text-center font-serif opacity-100' >
+            <div className='text-3xl font-bold tracking-tight text-gray-900 text-center font-serif opacity-100' >
                 <h1>”Life is short and the world is wide”</h1>
                 <p>“Be fearless in the pursuit of what sets your soul on fire.” - Jennifer Lee</p>
                 <p>“Travel makes one modest. You see what a tiny place you occupy in the world.” -Gustav Flaubert</p>

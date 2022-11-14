@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 const AllDataTable = ({ data }) => {
     const { name, Price, message, selectedOption, reviewerID } = data;
     const [review, setReview] = useState([]);
+    console.log(data)
+
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/service/${reviewerID}`)
@@ -11,9 +14,10 @@ const AllDataTable = ({ data }) => {
                 setReview(data)
             })
 
-    }, [reviewerID])
+    }, [])
 
     return (
+
         <tr className='border-yellow-900'>
             <td className='border-yellow-900'>
                 <div className="flex items-center space-x-3">

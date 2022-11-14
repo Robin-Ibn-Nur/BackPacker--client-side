@@ -22,40 +22,24 @@ const Footer = () => {
                             title="Company"
                             className="inline-flex items-center"
                         >
-                            <svg
-                                className="w-8 text-teal-accent-400"
-                                viewBox="0 0 24 24"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeMiterlimit="10"
-                                stroke="currentColor"
-                                fill="none"
-                            >
-                                <rect x="3" y="1" width="7" height="12" />
-                                <rect x="3" y="17" width="7" height="6" />
-                                <rect x="14" y="1" width="7" height="6" />
-                                <rect x="14" y="11" width="7" height="12" />
-                            </svg>
+                            <img className='w-auto h-20' src={"https://cdn-icons-png.flaticon.com/512/8876/8876882.png"} alt="" srcSet="" />
                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                                Company
+                                backpacker -  a travel lover
                             </span>
                         </a>
                         <div className="mt-4 lg:max-w-sm">
                             <p className="text-sm text-deep-purple-50">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                accusantium doloremque laudantium, totam rem aperiam.
+                                A Destination For The New Millennium.
                             </p>
                             <p className="mt-4 text-sm text-deep-purple-50">
-                                Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                beatae vitae dicta sunt explicabo.
+                                A More Rewarding Way To Travel
                             </p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
                         <div>
                             <p className="font-semibold tracking-wide text-teal-accent-400">
-                                Category
+                                Asia
                             </p>
                             <ul className="mt-2 space-y-2">
                                 <li>
@@ -63,7 +47,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        News
+                                        Bangladesh
                                     </a>
                                 </li>
                                 <li>
@@ -71,7 +55,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        World
+                                        Nepal
                                     </a>
                                 </li>
                                 <li>
@@ -79,7 +63,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Games
+                                        Bhutan
                                     </a>
                                 </li>
                                 <li>
@@ -87,14 +71,14 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        References
+                                        Pakistan
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div>
                             <p className="font-semibold tracking-wide text-teal-accent-400">
-                                Cherry
+                                Europe
                             </p>
                             <ul className="mt-2 space-y-2">
                                 <li>
@@ -102,7 +86,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Web
+                                        England
                                     </a>
                                 </li>
                                 <li>
@@ -110,7 +94,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        eCommerce
+                                        France
                                     </a>
                                 </li>
                                 <li>
@@ -118,7 +102,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Business
+                                        Portugal
                                     </a>
                                 </li>
                                 <li>
@@ -126,7 +110,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Entertainment
+                                        Denmark
                                     </a>
                                 </li>
                                 <li>
@@ -134,14 +118,14 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Portfolio
+                                        German
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div>
                             <p className="font-semibold tracking-wide text-teal-accent-400">
-                                Apples
+                                Australia
                             </p>
                             <ul className="mt-2 space-y-2">
                                 <li>
@@ -149,7 +133,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Media
+                                        Melborn
                                     </a>
                                 </li>
                                 <li>
@@ -157,7 +141,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Brochure
+                                        Sydney
                                     </a>
                                 </li>
                                 <li>
@@ -165,7 +149,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Nonprofit
+                                        Canberra
                                     </a>
                                 </li>
                                 <li>
@@ -173,7 +157,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Educational
+                                        Brisbane
                                     </a>
                                 </li>
                                 <li>
@@ -181,14 +165,14 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Projects
+                                        Sunshine Coast
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div>
                             <p className="font-semibold tracking-wide text-teal-accent-400">
-                                Business
+                                America
                             </p>
                             <ul className="mt-2 space-y-2">
                                 <li>
@@ -196,7 +180,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Infopreneur
+                                        Brazil
                                     </a>
                                 </li>
                                 <li>
@@ -204,7 +188,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Personal
+                                        Argentina
                                     </a>
                                 </li>
                                 <li>
@@ -212,7 +196,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Wiki
+                                        New-York
                                     </a>
                                 </li>
                                 <li>
@@ -220,7 +204,7 @@ const Footer = () => {
                                         href="/"
                                         className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                                     >
-                                        Forum
+                                        Washington DC
                                     </a>
                                 </li>
                             </ul>
@@ -229,7 +213,7 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
                     <p className="text-sm text-gray-100">
-                        © Copyright 2020 Lorem Inc. All rights reserved.
+                        © Copyright 2022 BacKPackeR All rights reserved.
                     </p>
                     <div className="flex items-center mt-4 space-x-4 sm:mt-0">
                         <a

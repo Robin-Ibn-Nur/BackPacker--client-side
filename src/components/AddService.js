@@ -1,74 +1,80 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../AuthProvider/AuthProvider';
-import SingleService from './SingleService'
 
 
 const AddService = () => {
-    const { user, logOut } = useContext(AuthContext);
-    const [users, setUsers] = useState([])
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/reviewer?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('user-token')}`
-            }
-        })
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const image = form.image.value;
+        const Price = form.price.value;
+        const description = form.details.value;
+        console.log(name, image, Price, description)
 
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut();
-                }
-                return res.json()
-            })
-            .then(data => {
-                setUsers(data)
-
-            })
-
-    }, [user?.email, logOut])
-
-
-    const handleDelete = id => {
-        if (id) {
-            fetch(`http://localhost:5000/reviewer/${id}`, {
-                method: "DELETE",
-
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-
-                        toast.success('SuccessFully Deleted 😊', { autoClose: 500 })
-                        const remaining = users.filter(review => review._id !== id);
-                        setUsers(remaining);
-                    }
-                })
+        const addService = {
+            name,
+            image,
+            Price,
+            description
         }
+
+
+        fetch("http://localhost:5000/service", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(addService)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    form.reset();
+                    toast.success('SuccessFully Added 😊', { autoClose: 500 })
+
+                }
+            })
+
     }
-
-
 
     return (
         <>
-            {
-                users.length <= 0 ?
-                    <h1 className='text-5xl text-center'>No Reviews Here. Please Add Some Review</h1>
-                    :
-                    <div className="bg-orange-500 rounded-box my-5 mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 ">
-                        <h2 className="text-2xl font-bold tracking-tight text-gray-900">You Have Seleceted This packages</h2>
-
-                        <div className=" mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 lg:grid-cols-3">
-                            {
-                                users.map(data => <SingleService
-                                    key={data._id}
-                                    us={data}
-                                    handleDelete={handleDelete}
-                                ></SingleService>)
-                            }
-                        </div>
+            <div className="card mx-auto flex-shrink-0 w-full border max-w-sm shadow-2xl bg-base-100">
+                <form onSubmit={handleSubmit} className="card-body">
+                    <h1 className="text-2xl text-center font-bold">Add your service</h1>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Title</span>
+                        </label>
+                        <input type="text" name='name' placeholder="ServiceName" className="input input-bordered" />
                     </div>
-            }
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Image</span>
+                        </label>
+                        <input type="text" name='image' placeholder="URL" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Price</span>
+                        </label>
+                        <input type="text" name='price' placeholder="Price" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Details</span>
+                        </label>
+                        <input type="text" name='details' placeholder="Descreption" className="input input-bordered" />
+                    </div>
+                    <div className="form-control mt-6">
+                        <input className="btn btn-primary rounded-md dark:bg-purple-400" type="submit" value="SubMit" />
+                    </div>
+                </form>
+            </div>
 
         </>
     );
