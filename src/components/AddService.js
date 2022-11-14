@@ -11,7 +11,6 @@ const AddService = () => {
         const image = form.image.value;
         const Price = form.price.value;
         const description = form.details.value;
-        console.log(name, image, Price, description)
 
         const addService = {
             name,
@@ -31,7 +30,6 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     form.reset();
                     toast.success('SuccessFully Added 😊', { autoClose: 500 })
