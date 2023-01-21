@@ -13,6 +13,8 @@ const User = ({ us, handleDelete }) => {
 
     }, [reviewerID])
 
+    // client side repo successfully transfered
+
     return (
         <tr>
             <td>
